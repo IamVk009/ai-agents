@@ -1,18 +1,10 @@
-import { Agent, run } from "@openai/agents";
-import 'dotenv/config';
+import {runAgentX} from './agentX.js';
+import {runWeatherAgent} from './weatherAgent.js';
 
-const agent = new Agent({
-    name: "Agent X",
-    instructions: "You are a helpful assistant that can answer questions and help with tasks."
-})
-
-// const response = await run(
-//     agent,
-//     "When is Ashes 2025 Starting ?"
-// )
-
-run(agent, "When is Ashes 2025 Starting ?").then((response) => {
-    console.log(response.finalOutput);
-});
-
-// console.log(response.finalOutput)
+try {
+    await runAgentX("Hey There!");
+    await runWeatherAgent("How is the weather of Delhi");
+} catch (error) {
+    console.error("Error while calling Agents in index.js : ", error);
+    process.exit(1);
+}
