@@ -17,7 +17,7 @@ const getWeather = tool({
     }
 })
 
-const senEmail = tool({
+const sendEmail = tool({
     name: "Send_Email",
     description: "You are an agent that sends an email on the provided Email Id.",
     parameters: z.object({
@@ -47,7 +47,7 @@ const senEmail = tool({
 const weatherAgent = new Agent({
     name: "WeatherAgent",
     instructions: `You are a helpful agent that provides weather information for any geographical location.`,
-    tools: [getWeather, senEmail]
+    tools: [getWeather, sendEmail]
 });
 
 export async function runWeatherAgentWithTool(prompt) {
